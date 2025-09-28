@@ -7,6 +7,7 @@ const usuarios = [
     { id: 1, nombre: 'Juan', edad: 28 },
     { id: 2, nombre: 'María', edad: 34 },
     { id: 3, nombre: 'Pedro', edad: 22 },
+    { id: 4, nombre: 'Sofia', edad: 20 },
 ]
 
 app.get('/', (req, res) => {
