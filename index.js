@@ -11,7 +11,7 @@ const usuarios = [
 ]
 
 app.get('/', (req, res) => {
-    res.send('¡Servicios de NutriSnacks!');
+    res.send('¡Servicios NutriSnacks!');
 });
 
 app.get('/usuarios', (req, res) => {
