@@ -4,7 +4,7 @@ const { default: PG } = require('pg');
 const { Pool } = require("pg");
 
 const app = express();
-const SERVERPORT = process.env.SERVER_PORT || 8080;
+const SERVERPORT = process.env.SERVER_PORTO || 8080;
 const connectionString = process.env.DATABASE_URL;
 
 
@@ -41,6 +41,6 @@ app.get('/usuarios', async (req, res) => {
 });
 
 app.listen(SERVERPORT, () => {
-    console.log(process.env.PRIVATE_PORT);
+    console.log(process.env.SERVER_PORT);
     console.log(`Servidor escuchando en http://localhost:${SERVERPORT}`);
 });
