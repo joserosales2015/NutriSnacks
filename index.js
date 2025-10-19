@@ -14,15 +14,24 @@ if (!connectionString) {
 
 
 // Configura tu conexión a PostgreSQL
+
+console.log("user:", process.env.PG_USERNAME);
+console.log("host:", process.env.PG_HOSTNAME);
+console.log("bd:", process.env.PG_DATABASE);
+console.log("pwd:", process.env.PG_PASSWORD);
+console.log("port:", process.env.PG_PORT);
+
 const pool = new Pool({
-    connectionString: connectionString,
-    // NO necesitas pasar 'ssl: { rejectUnauthorized: false }'
-    // porque 'sslmode=require' ya está en la URL inyectada por DO.
-    // Si quieres forzar la verificación (verify-ca), sí necesitarías configurarlo aquí.
-    ssl: {
-        rejectUnauthorized: false,
-    },
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
+  ssl: {
+    rejectUnauthorized: false, // sslmodde -> 'require'
+  },
 });
+
 
 app.get('/', (req, res) => {
     res.send('¡Servicios NutriSnacks!');
