@@ -14,22 +14,12 @@ if (!connectionString) {
 
 
 // Configura tu conexión a PostgreSQL
-
-console.log("user:", process.env.PG_USERNAME);
-console.log("host:", process.env.PG_HOSTNAME);
-console.log("bd:", process.env.PG_DATABASE);
-console.log("pwd:", process.env.PG_PASSWORD);
-console.log("port:", process.env.PG_PORT);
-
 const pool = new Pool({
   user: process.env.PG_USERNAME,
   host: process.env.PG_HOSTNAME,
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
-  port: process.env.PG_PORT,
-  ssl: {
-    rejectUnauthorized: false, // sslmodde -> 'require'
-  },
+  port: process.env.PG_PORT
 });
 
 
