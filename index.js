@@ -5,12 +5,13 @@ const { Pool } = require("pg");
 
 const app = express();
 const SERVERPORT = process.env.SERVER_PORT || 3000;
-const rejectUnauthorized = process.env.PG_REJECT_UNAUTHORIZED === 'false' ? false : true;
+//const rejectUnauthorized = process.env.PG_REJECT_UNAUTHORIZED === 'false' ? false : true;
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
     throw new Error('La variable de entorno DATABASE_URL no está configurada.');
 }
+
 
 // Configura tu conexión a PostgreSQL
 const pool = new Pool({
@@ -22,6 +23,7 @@ const pool = new Pool({
 
 app.get('/', (req, res) => {
     res.send('¡Servicios NutriSnacks!');
+    console.log(connectionString);
 });
 
 app.get('/usuarios', async (req, res) => {
