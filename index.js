@@ -5,9 +5,8 @@ const { Pool } = require("pg");
 
 const app = express();
 const SERVERPORT = process.env.SERVER_PORT || 3000;
-// const rejectUnauthorized = process.env.PG_REJECT_UNAUTHORIZED === 'false' ? false : true;
 const connectionString = process.env.DATABASE_URL;
-const caCert = process.env.PG_CA_CERT;
+
 
 if (!connectionString) {
     throw new Error('La variable de entorno DATABASE_URL no está configurada.');
@@ -21,14 +20,13 @@ const pool = new Pool({
     // porque 'sslmode=require' ya está en la URL inyectada por DO.
     // Si quieres forzar la verificación (verify-ca), sí necesitarías configurarlo aquí.
     ssl: {
-        // 3. Pasa el contenido del certificado a la conexión
-        ca: caCert,
+        rejectUnauthorized: true,
+        ca: process.env.PG_CA_CERT,
     },
 });
 
 app.get('/', (req, res) => {
     res.send('¡Servicios NutriSnacks!');
-    console.log(process.env.PG_CA_CERT);
 });
 
 app.get('/usuarios', async (req, res) => {
