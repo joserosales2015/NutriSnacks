@@ -28,7 +28,7 @@ const pool = new Pool({
 
 app.get('/', (req, res) => {
     res.send('¡Servicios NutriSnacks!');
-    console.log(connectionString);
+    console.log(process.env.DATABASE_CA_CERT);
 });
 
 app.get('/usuarios', async (req, res) => {
