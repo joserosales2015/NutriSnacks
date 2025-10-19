@@ -4,7 +4,7 @@ const { default: PG } = require('pg');
 const { Pool } = require("pg");
 
 const app = express();
-const SERVERPORT = process.env.SERVER_PORT || 3000;
+const SERVERPORT = process.env.SERVER_PORT || 8080;
 const connectionString = process.env.DATABASE_URL;
 
 
