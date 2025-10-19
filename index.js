@@ -19,7 +19,10 @@ const pool = new Pool({
   host: process.env.PG_HOSTNAME,
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
-  port: process.env.PG_PORT
+  port: process.env.PG_PORT,
+  ssl: {
+    rejectUnauthorized: false, // sslmodde -> 'require'
+  },
 });
 
 
@@ -38,5 +41,6 @@ app.get('/usuarios', async (req, res) => {
 });
 
 app.listen(SERVERPORT, () => {
+    console.log(process.env.PRIVATE_PORT);
     console.log(`Servidor escuchando en http://localhost:${SERVERPORT}`);
 });
