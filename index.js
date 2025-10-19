@@ -20,8 +20,7 @@ const pool = new Pool({
     // porque 'sslmode=require' ya está en la URL inyectada por DO.
     // Si quieres forzar la verificación (verify-ca), sí necesitarías configurarlo aquí.
     ssl: {
-        rejectUnauthorized: true,
-        ca: process.env.PG_CA_CERT,
+        rejectUnauthorized: false,
     },
 });
 
