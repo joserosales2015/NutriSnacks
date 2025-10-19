@@ -39,9 +39,7 @@ app.get('/', (req, res) => {
 
 app.get('/usuarios', async (req, res) => {
     try {
-        const result = await pool.query("SELECT id, nombre, email, " +
-            "TO_CHAR(fecha_nac AT TIME ZONE 'America/Lima', 'YYYY-MM-DD HH24:MI:SS.MS') AS fecha_nac " + 
-            "FROM usuarios;");
+        const result = await pool.query("SELECT * FROM usuarios;");
         res.json(result.rows); // Devuelve los usuarios en formato JSON
     } catch (err) {
         console.error("Error al consultar usuarios:", err);
